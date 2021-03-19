@@ -1,0 +1,16 @@
+type Query {
+    customers(firstNameFilter: String): [Customer]
+}
+
+type Mutation {
+    addCustomer(customer: NewCustomer):Customer
+}
+
+input NewCustomer {
+    firstName: String
+}
+
+type Customer @key(fields: "id") {
+    id: Int
+    firstName: String
+}
