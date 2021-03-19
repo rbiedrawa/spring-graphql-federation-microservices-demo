@@ -1,0 +1,10 @@
+type Customer @key(fields: "id") @extends {
+    id: Int @external
+    reviews: [Review]
+}
+
+type Review {
+    id: Int
+    rating: Int,
+    message: String
+}
