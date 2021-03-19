@@ -1,0 +1,38 @@
+---
+version: '2'
+services:
+  apollo-gateway:
+    image: rbiedrawa/apollo-gateway:1.0.0
+    container_name: apollo-gateway
+    restart: always
+    depends_on:
+      - customer-service
+      - review-service
+    ports:
+      - 4000:4000
+    environment:
+      GRAPHQL_ENDPOINTS: "customer-service:http://customer-service:8080/graphql/,review-service:http://review-service:8081/graphql/"
+
+  customer-service:
+    image: rbiedrawa/customer-service:0.0.1-SNAPSHOT
+    container_name: customer-service
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      spring.profiles.active: dev
+
+  review-service:
+    image: rbiedrawa/review-service:0.0.1-SNAPSHOT
+    container_name: review-service
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      spring.profiles.active: dev
+#      TODO: add curl to image in order to trigger healthcheck
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+#      interval: 5s
+#      timeout: 5s
+#      retries: 5
