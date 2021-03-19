@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apollo-gateway
+  name: apollo-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apollo-gateway
+  template:
+    metadata:
+      labels:
+        app: apollo-gateway
+    spec:
+      containers:
+        - image: rbiedrawa/apollo-gateway:1.0.0
+          name: apollo-gateway
+          ports:
+            - containerPort: 4000
+          livenessProbe:
+            httpGet:
+              path: /.well-known/apollo/server-health
+              port: 4000
+            initialDelaySeconds: 300
+            timeoutSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /.well-known/apollo/server-health
+              port: 4000
+          env:
+            - name: GRAPHQL_ENDPOINTS
+              value: "customer-service:http://customer-service.spring-graphql-federation-demo.svc.cluster.local:8080/graphql/,review-service:http://review-service.spring-graphql-federation-demo.svc.cluster.local:8080/graphql/"

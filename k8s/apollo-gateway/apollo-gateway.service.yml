@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: apollo-gateway
+  name: apollo-gateway
+spec:
+  ports:
+  - name: 4000-4000
+    port: 4000
+    protocol: TCP
+    targetPort: 4000
+  selector:
+    app: apollo-gateway
+  type: ClusterIP

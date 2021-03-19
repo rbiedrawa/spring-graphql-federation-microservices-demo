@@ -2,75 +2,72 @@
 
 ## Overview
 
+Spring Boot GraphQL microservices demo that shows how to use DGS framework together with Apollo Federation Server.
 
-The repository contains three separate projects:
+All applications can be run locally, inside docker or kubernetes cluster. 
 
-customer-service: Spring Boot GraphQL service providing the federated Customer type
-gateway: Apollo Server acting as the Federated Gateway
-review-service: Spring Boot GraphQL service that extends the Customer type with reviews
+## Services
 
-## About GraphQL
-GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.
-
-GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+* [Apollo Gateway](./gateway) - Apollo Server acting as the Federated Gateway.
+* [Customer Service](./customer-service) - Spring Boot GraphQL application providing the federated Customer type.
+* [Review Service](./review-service) - Spring Boot GraphQL application that extends the Customer type with reviews.
 
 
-## Build docker images
-```
-sh buildDockerImages.sh
-```
+## Architecture
 
-## Start docker-compose
+![k8s-dashboard](./_docs/architecture-k8s.png)
 
-```
-# Start microservices
-docker-compose up -d customer-service review-service
 
-# Check services startup
-docker-compose logs -f customer-service
-docker-compose logs -f review-service
+## Build
 
-# Start Apollo Gateway 
-docker-compose up -d apollo-gateway
+You can build all the services by running the `buildDockerImages.sh` on Mac/Linux systems.
 
-# Check Logs
-docker-compose logs -f apollo-gateway
+## Local Deployment
 
-```
+TODO: 
 
-## Test GraphQL services
+## Docker Deployment
 
-Open [query editor](http://localhost:4000/)
+Docker compose file with instructions are kept in [docker](./docker) subdirectory.
 
-Write the following query and tests the result.
+### Kubernetes Deployment
 
-1)  All customers with reviews (federated query) 
-```
-query {
-  customers{
-    id
-    firstName
-    reviews{
-      id
-      rating
-      message
+Kubernetes manifests with instructions are kept in [k8s](./k8s) subdirectory.
+
+##  Usage
+* Open [GraphQL playground GUI](http://localhost:4000/)
+
+* Write the following query and tests the result: 
+    -  Find all customers with reviews (federated query)
+    ```
+    query {
+      customers{
+        id
+        firstName
+        reviews{
+          id
+          rating
+          message
+        }
+      }
     }
-  }
-}
-```
+    ```
+    e.g
+    ![Federation Query Response](./_docs/federation-query.png)
 
-2) Add new customer
-```
-mutation {
-  addCustomer(customer: { firstName: "New User" }) {
-    id
-    firstName
-  }
-}
-```
+    - Create new customer
+    ```
+    mutation {
+      addCustomer(customer: { firstName: "New User" }) {
+        id
+        firstName
+      }
+    }
+    ```
 
 ## References
 
-[GraphQL](https://graphql.org/)
-
-[DGS framework](https://netflix.github.io/dgs/)
+* [GraphQL](https://graphql.org/)
+* [Introduction to Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+* [Introduction to Apollo Federation](https://www.apollographql.com/docs/federation/)
+* [DGS framework](https://netflix.github.io/dgs/)

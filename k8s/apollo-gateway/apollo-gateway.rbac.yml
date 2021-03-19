@@ -1,0 +1,30 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: apollo-gateway
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+      - pods
+      - endpoints
+      - namespaces
+      - configmaps
+      - secrets
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: apollo-gateway
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: apollo-gateway
+subjects:
+  - kind: ServiceAccount
+    name: default
