@@ -1,4 +1,4 @@
-/gateway/node_modules/
+services/gateway/node_modules/
 
 HELP.md
 .gradle

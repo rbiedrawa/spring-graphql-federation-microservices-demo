@@ -8,7 +8,7 @@ All applications can be run locally, inside docker or kubernetes cluster.
 
 ## Services
 
-* [Apollo Gateway](./gateway) - Apollo Server acting as the Federated Gateway.
+* [Apollo Gateway](services/gateway) - Apollo Server acting as the Federated Gateway.
 * [Customer Service](./customer-service) - Spring Boot GraphQL application providing the federated Customer type.
 * [Review Service](./review-service) - Spring Boot GraphQL application that extends the Customer type with reviews.
 
@@ -63,12 +63,11 @@ You can build all the services by running the `buildDockerImages.sh` on Mac/Linu
 
 ### Docker
 
-Docker compose file with instructions are kept in [docker](./docker) subdirectory.
+Docker compose file with instructions are kept in [docker](deployment/docker) subdirectory.
 
 ### Kubernetes
 
-Kubernetes manifests with instructions are kept in [k8s](./k8s) subdirectory.
-
+Kubernetes manifests with instructions are kept in [k8s](deployment/k8s) subdirectory.
 
 ## References
 
