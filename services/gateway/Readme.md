@@ -1,6 +1,4 @@
-# Apollo Gateway 
-
-## Overview
+# Apollo Gateway
 
 Node application that start Apollo Gateway on port 4000 and connects to the two microservices.
 

@@ -1,7 +1,5 @@
 # Review Service
 
-## Overview
-
 Spring Boot application that exposes review domain graphs.
 
 ## Getting Started

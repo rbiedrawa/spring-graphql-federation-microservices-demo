@@ -1,7 +1,5 @@
 # Customer Service
 
-## Overview
-
 Spring Boot application that exposes customer domain graphs.
 
 Application provides the federated Customer type.

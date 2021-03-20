@@ -1,16 +1,29 @@
 # Spring Boot GraphQL Federation Microservices (PoC)
 
-## Overview
-
 Spring Boot GraphQL microservices demo that shows how to use DGS framework together with Apollo Federation Server.
 
 All applications can be run locally, inside docker or kubernetes cluster.
 
+## Table of Content
+
+- [Services](#services)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+  * [Installation](#installation)
+  * [Usage](#usage)
+- [Deployment](#deployment)
+  * [Build](#build)
+  * [Docker](#docker)
+  * [Kubernetes](#kubernetes)
+- [References](#references)
+- [License](#license)
+
+
 ## Services
 
-* [Apollo Gateway](services/gateway) - Apollo Server acting as the Federated Gateway.
-* [Customer Service](./customer-service) - Spring Boot GraphQL application providing the federated Customer type.
-* [Review Service](./review-service) - Spring Boot GraphQL application that extends the Customer type with reviews.
+* [Apollo Gateway](./services/gateway) - Apollo Server acting as the Federated Gateway.
+* [Customer Service](./services/customer-service) - Spring Boot GraphQL application providing the federated Customer type.
+* [Review Service](./services/review-service) - Spring Boot GraphQL application that extends the Customer type with reviews.
 
 
 ## Architecture
