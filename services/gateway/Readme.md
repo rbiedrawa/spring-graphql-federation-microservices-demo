@@ -23,7 +23,7 @@ You can make queries against the Spring apps directly or run combined queries fr
 ### Build
 
 ```
-docker build -t rbiedrawa/apollo-gateway:1.0.0
+docker build -t rbiedrawa/apollo-gateway:1.0.0 .
 ```
 
 ## Important Endpoints
