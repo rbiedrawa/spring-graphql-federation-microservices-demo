@@ -88,6 +88,7 @@ Kubernetes manifests with instructions are kept in [k8s](deployment/k8s) subdire
 * [Introduction to Apollo Server](https://www.apollographql.com/docs/apollo-server/)
 * [Introduction to Apollo Federation](https://www.apollographql.com/docs/federation/)
 * [DGS framework](https://netflix.github.io/dgs/)
+* [Moving beyond REST: GraphQL and Java & Spring by Pratik Patel @ Spring I/O 2019](https://www.youtube.com/watch?v=iHxu2bq3fxI)
 
 ## License
 
